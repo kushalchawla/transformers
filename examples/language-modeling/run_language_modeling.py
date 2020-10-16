@@ -239,6 +239,8 @@ def main():
         logger.info("Training new model from scratch")
         model = AutoModelWithLMHead.from_config(config)
 
+    special_tokens_dict = {'pad_token': '<|pad|>', 'additional_special_tokens':['🙂', '☹️', '😮', '😡', 'firewood']}
+    num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
     model.resize_token_embeddings(len(tokenizer))
 
     if config.model_type in ["bert", "roberta", "distilbert", "camembert"] and not data_args.mlm:
@@ -286,6 +288,11 @@ def main():
 
     # Training
     if training_args.do_train:
+        
+        #BY KC (saving before the training starts as well):
+        if trainer.is_world_master():
+            tokenizer.save_pretrained(training_args.output_dir)
+        
         model_path = (
             model_args.model_name_or_path
             if model_args.model_name_or_path is not None and os.path.isdir(model_args.model_name_or_path)

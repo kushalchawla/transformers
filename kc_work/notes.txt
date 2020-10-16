@@ -1,1 +1,5 @@
-trials
+TASKS:
+
+-> Convert data to gpt2 format: just needs an end of text token after every line...with pad token added to the script and then split it in train/test/val. -> 830/100/100
+-> tokenizer: along with pad, also add firewood + emoticons.
+-> supply updated tokenizer to the models. train for 5 epochs.
