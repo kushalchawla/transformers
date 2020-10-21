@@ -1,4 +1,4 @@
-# Initially taken from Github's Python gitignore file
+#lso antigen sucks Initially taken from Github's Python gitignore file
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -156,3 +156,6 @@ debug.env
 
 #ctags
 tags
+
+#slurm
+slurm-

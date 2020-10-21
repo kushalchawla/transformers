@@ -3,3 +3,11 @@ TASKS:
 -> Convert data to gpt2 format: just needs an end of text token after every line...with pad token added to the script and then split it in train/test/val. -> 830/100/100
 -> tokenizer: along with pad, also add firewood + emoticons.
 -> supply updated tokenizer to the models. train for 5 epochs.
+
+Eval from source:
+python run_language_modeling.py --output_dir=../../../../storage/logs/dgpt-m-eval/  --model_type=gpt2 --model_name_or_path=microsoft/DialoGPT-medium --do_eval --eval_data_file=../../../../storage/data/valid.txt --per_device_eval_batch_size=1 --line_by_line
+
+train
+python run_language_modeling.py --output_dir=../../../../storage/logs/dgpt-ft-s-analysis/ --model_type=gpt2 --model_name_or_path=microsoft/DialoGPT-small --do_train --train_data_file=../../../../storage/data/train.txt --do_eval --eval_data_file=../../../../storage/data/valid.txt --per_device_train_batch_size=1 --per_device_eval_batch_size=1 --learning_rate=5e-5 --num_train_epochs=10 --line_by_line --save_steps=10000 --save_total_limit=20 --max_steps=100 --evaluate_during_training --evaluation_strategy=steps --logging_steps=10 --eval_steps=20 --load_best_model_at_end --metric_for_best_model=eval_loss --greater_is_better=False
+
+python run_language_modeling.py --output_dir=../../../../storage/logs/dgpt-ft-s-analysis/ --model_type=gpt2 --model_name_or_path=microsoft/DialoGPT-small --do_train --train_data_file=../../../../storage/data/train.txt --do_eval --eval_data_file=../../../../storage/data/valid.txt --per_device_train_batch_size=1 --per_device_eval_batch_size=1 --learning_rate=5e-5 --num_train_epochs=100 --line_by_line --save_steps=20000 --save_total_limit=20 --evaluate_during_training --evaluation_strategy=steps --logging_steps=100 --eval_steps=100
