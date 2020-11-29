@@ -1,0 +1,21 @@
+{
+    "global_params" : {
+        "train_en_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/train.src",
+        "train_de_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/train.tgt",
+        "valid_en_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/valid.src",
+        "valid_de_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/valid.tgt",
+        "tokenizer_path" : "/project/glucas_540/kchawla/casino/git_repo/storage/logs/bert_base_extended_p2",
+        "pretrained": true,
+        "pretrained_path" : "/project/glucas_540/kchawla/casino/git_repo/storage/logs/bert_base_extended_p2",
+        "num_attn_heads" : 1,
+        "num_hidden_layers" : 1
+    },
+
+    "model_params" : {
+        "batch_size" : 16,
+        "num_epochs" : 1,
+        "lr": 0.00001,
+        "model_path" : "/project/glucas_540/kchawla/csci699/storage/logs/seq2seq/dummy1",
+        "model_name": "model.mdl"
+    }
+}
