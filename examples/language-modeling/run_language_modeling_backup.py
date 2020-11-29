@@ -239,7 +239,7 @@ def main():
         logger.info("Training new model from scratch")
         model = AutoModelWithLMHead.from_config(config)
 
-    special_tokens_dict = {'pad_token': '<|pad|>', 'additional_special_tokens':['🙂', '☹️', '😮', '😡', 'firewood', '<end_of_text>']}
+    special_tokens_dict = {'pad_token': '<|pad|>', 'additional_special_tokens':['🙂', '☹️', '😮', '😡', 'firewood']}
     num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
     model.resize_token_embeddings(len(tokenizer))
 
