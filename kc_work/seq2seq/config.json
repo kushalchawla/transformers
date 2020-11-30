@@ -4,17 +4,21 @@
         "train_de_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/train.tgt",
         "valid_en_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/valid.src",
         "valid_de_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/valid.tgt",
+        "test_en_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/test.src",
+        "test_de_file" : "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/dummy/test.tgt",
         "tokenizer_path" : "/project/glucas_540/kchawla/casino/git_repo/storage/logs/bert_base_extended_p2",
         "pretrained": true,
         "pretrained_path" : "/project/glucas_540/kchawla/casino/git_repo/storage/logs/bert_base_extended_p2",
         "num_attn_heads" : 1,
-        "num_hidden_layers" : 1
+        "num_hidden_layers" : 1,
+        "do_train": false,
+        "do_eval": true
     },
 
     "model_params" : {
         "batch_size" : 16,
-        "num_epochs" : 1,
-        "lr": 0.00001,
+        "num_epochs" : 2,
+        "lr": 0.00002,
         "model_path" : "/project/glucas_540/kchawla/csci699/storage/logs/seq2seq/dummy1",
         "model_name": "model.mdl"
     }

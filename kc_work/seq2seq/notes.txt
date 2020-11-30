@@ -1,0 +1,12 @@
+Okay cool.
+
+So the model is training on a dummy dataset and the perplexity is being printed..
+
+Action items:
+
+Quickly check the perplexity implementation
+
+for all train/valid/test datasets:
+    create (context, scenario, utt) dataset.
+    use dgpt to create corresponding templates (from the contexts).
+    use a final script to create <scenario, template>.src <utt>.tgt
