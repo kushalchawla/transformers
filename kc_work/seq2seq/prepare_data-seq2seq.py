@@ -13,7 +13,7 @@ Basically use the (context, scenario, utt) to create a series of templates (x) a
 
 dtype = "train"
 #template_types = ["copy", "greedy", "sample", "noisy"]
-template_types = ["greedy"]
+template_types = ["greedy", "sample", "noisy"]
 
 in_f = "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/casino/s2s_cxt_scen_utt.json"
 
@@ -34,7 +34,7 @@ for in_f_sample in in_f_samples:
 print("loaded sample data ", in_f_samples)
 
 out_src = "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/casino/" + dtype + "_" + "_".join(sorted(template_types)) + ".src"
-out_tgt = "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/casino/" + dtype + ".tgt"
+out_tgt = "/project/glucas_540/kchawla/csci699/storage/data/seq2seq/casino/" + dtype + "_utterance_" + "_".join(sorted(template_types)) + ".tgt"
 
 def get_input(msg):
 
@@ -76,9 +76,37 @@ def get_sample_templates(item):
 
 def get_noisy_variants(temp):
     """
-    basically switch item types and item numbers..
+    basically switch item types and item numbers.. only 1 noisy variant per template: sounds okay for now: we can increase the noise if there is good evidence that it helps. data is good enough to help, if it is indeed beneficial.
     """
-    return []
+
+    itemtypes = ["food", "water", "firewood"]
+    counts = ["1", "2", "3"]
+
+    words_noisy = []
+    words = temp.split()
+    for word in words:
+
+        word_noisy = word
+
+        if("food" in word):
+            word_noisy = word.replace("food", random.choice(itemtypes))
+        elif("water" in word):
+            word_noisy = word.replace("water", random.choice(itemtypes))
+        elif("firewood" in word):
+            word_noisy = word.replace("firewood", random.choice(itemtypes))
+
+        if("1" in word):
+            word_noisy = word.replace("1", random.choice(counts))
+        elif("2" in word):
+            word_noisy = word.replace("2", random.choice(counts))
+        elif("3" in word):
+            word_noisy = word.replace("3", random.choice(counts))
+    
+        words_noisy.append(word_noisy)
+
+    temp_noisy = " ".join(words_noisy)
+
+    return [temp_noisy]
 
 def get_noisy_templates(templates):
 

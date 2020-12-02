@@ -10,3 +10,37 @@ for all train/valid/test datasets:
     create (context, scenario, utt) dataset.
     use dgpt to create corresponding templates (from the contexts).
     use a final script to create <scenario, template>.src <utt>.tgt
+
+Data files:
+
+_utterance: actual output.
+
+valid_greedy.src
+valid_utterance_greedy.tgt
+
+test_greedy.src
+test_utterance_greedy.tgt
+
+train_greedy.src
+train_greedy.tgt -> greedy outputs.
+train_utterance_greedy.tgt -> actual outputs
+
+train_greedy_sample.src
+train_utterance_greedy_sample.tgt
+
+train_greedy_noisy_sample.src
+train_utterance_greedy_noisy_sample.tgt
+
+
+Models: 
+
+bert2bert
+T2T: 1 layer, same tokenizer/vocab.
+
+X (both models)
+No training
+greedy x greedy
+
+greedy X utt
+greedy+sample X utt
+greedy+sample+noisy X utt
